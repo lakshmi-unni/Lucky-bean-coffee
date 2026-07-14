@@ -1,3 +1,5 @@
+import ResponsiveImage from './ResponsiveImage'
+
 export default function CtaBanner() {
   return (
     <section className="relative overflow-hidden bg-coffee-900">
@@ -21,10 +23,10 @@ export default function CtaBanner() {
         </div>
 
         <div className="mx-auto">
-          <img
+          <ResponsiveImage
             src="/cta-coffee-cup.jpg"
             alt="Takeaway coffee cup surrounded by roasted coffee beans"
-            className="h-72 w-72 rounded-full object-cover shadow-2xl md:h-80 md:w-80"
+            className="h-72 w-72 rounded-full shadow-2xl md:h-80 md:w-80"
           />
         </div>
       </div>

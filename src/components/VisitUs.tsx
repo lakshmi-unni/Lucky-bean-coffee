@@ -37,11 +37,14 @@ export default function VisitUs() {
               <h3 className="font-heading text-lg font-semibold text-coffee-700">
                 Opening Hours
               </h3>
-              <dl className="mt-3 space-y-2 text-sm">
+              <dl className="mt-4 space-y-3">
                 {HOURS.map((row) => (
-                  <div key={row.days} className="flex justify-between gap-4 text-body-text">
-                    <dt>{row.days}</dt>
-                    <dd className="font-medium text-coffee-700">{row.time}</dd>
+                  <div key={row.days} className="flex items-baseline gap-3 text-sm">
+                    <dt className="shrink-0 text-body-text">{row.days}</dt>
+                    <div className="h-px flex-1 border-b border-dotted border-coffee-700/25" />
+                    <dd className="shrink-0 font-heading text-base font-semibold text-coffee-700">
+                      {row.time}
+                    </dd>
                   </div>
                 ))}
               </dl>

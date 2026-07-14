@@ -1,3 +1,6 @@
+import { useRef, useState } from 'react'
+import { motion } from 'framer-motion'
+
 function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5 text-gold-500">
@@ -42,11 +45,29 @@ const REVIEWS = [
     quote:
       'Cardamom bun and an espresso is the move. Gets busy after 9am, worth the wait anyway.',
   },
+  {
+    name: 'Fatima Al Suwaidi',
+    role: 'Marketing Manager',
+    avatar: '/review-avatar-priya.jpg',
+    rating: 5,
+    quote:
+      'Good wifi, better coffee, and nobody rushes you out after one cup. Rare combination in this city.',
+  },
 ]
 
 export default function Testimonials() {
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [constraint, setConstraint] = useState(0)
+
+  const measure = (el: HTMLDivElement | null) => {
+    trackRef.current = el
+    if (el) {
+      setConstraint(-(el.scrollWidth - el.parentElement!.clientWidth))
+    }
+  }
+
   return (
-    <section id="testimonials" className="bg-cream-50">
+    <section id="testimonials" className="overflow-hidden bg-cream-50">
       <div className="mx-auto max-w-6xl px-6 py-24 md:px-10">
         <div className="text-center">
           <h2 className="font-heading text-4xl font-semibold text-coffee-700 md:text-5xl">
@@ -59,13 +80,22 @@ export default function Testimonials() {
             </p>
             <p className="text-sm text-body-text">&middot; 312 Google reviews</p>
           </div>
+          <p className="mt-2 text-xs text-body-text/70">
+            Drag to see more &rarr;
+          </p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <motion.div
+          ref={measure}
+          drag="x"
+          dragConstraints={{ left: constraint, right: 0 }}
+          dragElastic={0.08}
+          className="mt-10 flex w-max cursor-grab gap-6 active:cursor-grabbing"
+        >
           {REVIEWS.map((review) => (
             <div
               key={review.name}
-              className="rounded-2xl bg-cream-100 p-6"
+              className="w-72 shrink-0 select-none rounded-2xl bg-cream-100 p-6 md:w-80"
             >
               <Stars count={review.rating} />
               <p className="mt-4 text-sm leading-relaxed text-body-text">
@@ -75,6 +105,7 @@ export default function Testimonials() {
                 <img
                   src={review.avatar}
                   alt={review.name}
+                  draggable={false}
                   className="h-10 w-10 rounded-full object-cover"
                 />
                 <div>
@@ -86,7 +117,7 @@ export default function Testimonials() {
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

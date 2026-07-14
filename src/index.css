@@ -1,36 +1,37 @@
 @import "tailwindcss";
-@import "@fontsource/playfair-display/400.css";
-@import "@fontsource/playfair-display/500.css";
-@import "@fontsource/playfair-display/600.css";
-@import "@fontsource/playfair-display/700.css";
+@import "@fontsource-variable/fraunces/full.css";
+@import "@fontsource-variable/fraunces/full-italic.css";
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
 @import "@fontsource/sacramento/400.css";
-@import "@fontsource/poppins/300.css";
-@import "@fontsource/poppins/400.css";
-@import "@fontsource/poppins/500.css";
-@import "@fontsource/poppins/600.css";
 
 @theme {
   --font-script: "Sacramento", cursive;
-  --font-heading: "Playfair Display", serif;
-  --font-body: "Poppins", sans-serif;
+  --font-heading: "Fraunces Variable", "Fraunces", serif;
+  --font-body: "Space Grotesk", sans-serif;
 
-  --color-coffee-950: #201209;
-  --color-coffee-900: #2b1810;
-  --color-coffee-800: #3a2116;
-  --color-coffee-700: #4a2c17;
-  --color-coffee-600: #6b4226;
-  --color-coffee-500: #8a5a3a;
-  --color-coffee-400: #a97c56;
+  /* Deep roast browns — primary dark tone, espresso-black at the low end */
+  --color-coffee-950: #1a100a;
+  --color-coffee-900: #2b1b12;
+  --color-coffee-800: #3a2416;
+  --color-coffee-700: #4a2e1e;
+  --color-coffee-600: #5c3a26;
+  --color-coffee-500: #77492e;
+  --color-coffee-400: #96633f;
 
-  --color-cream-50: #fdf8f0;
-  --color-cream-100: #faf3e7;
-  --color-cream-200: #f4e9d8;
+  /* Warm cream base — never pure white */
+  --color-cream-50: #f7f1e8;
+  --color-cream-100: #f2e9da;
+  --color-cream-200: #ead9c2;
 
-  --color-gold-400: #e3b769;
-  --color-gold-500: #d9a441;
-  --color-gold-600: #c98f2c;
+  /* Single accent: muted terracotta, used sparingly */
+  --color-gold-400: #d89a63;
+  --color-gold-500: #c97c3d;
+  --color-gold-600: #a8632e;
 
-  --color-body-text: #7a6a5c;
+  --color-body-text: #6b5744;
 }
 
 body {
@@ -39,4 +40,50 @@ body {
   color: var(--color-coffee-700);
   background: var(--color-cream-50);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Fraunces' irregular-stroke axes — real character on headlines, not just size scaling */
+h1,
+h2,
+h3 {
+  font-variation-settings: "SOFT" 40, "WONK" 1;
+  letter-spacing: -0.01em;
+}
+
+/* Subtle paper-grain overlay for large flat sections — kills the flat-gradient AI look */
+.bg-grain {
+  position: relative;
+  isolation: isolate;
+}
+.bg-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

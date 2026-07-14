@@ -22,8 +22,23 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-coffee-950">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:px-10">
+    <footer className="bg-grain relative overflow-hidden bg-coffee-950">
+      <svg
+        viewBox="0 0 200 260"
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-10 -top-16 h-72 w-56 text-white/[0.035] md:h-96 md:w-72"
+      >
+        <ellipse cx="100" cy="140" rx="68" ry="100" fill="currentColor" />
+        <path
+          d="M100 45 Q90 140 100 235"
+          stroke="#1a100a"
+          strokeWidth="10"
+          strokeLinecap="round"
+          fill="none"
+          opacity="0.4"
+        />
+      </svg>
+      <div className="relative mx-auto max-w-7xl px-6 py-16 md:px-10">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <p className="font-script text-3xl text-gold-400">Lucky Bean</p>

@@ -1,13 +1,16 @@
+import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import About from './components/About'
-import Menu from './components/Menu'
-import WhyDifferent from './components/WhyDifferent'
-import CtaBanner from './components/CtaBanner'
-import Testimonials from './components/Testimonials'
-import VisitUs from './components/VisitUs'
-import Newsletter from './components/Newsletter'
-import Footer from './components/Footer'
+
+const About = lazy(() => import('./components/About'))
+const Menu = lazy(() => import('./components/Menu'))
+const WhyDifferent = lazy(() => import('./components/WhyDifferent'))
+const Gallery = lazy(() => import('./components/Gallery'))
+const CtaBanner = lazy(() => import('./components/CtaBanner'))
+const Testimonials = lazy(() => import('./components/Testimonials'))
+const VisitUs = lazy(() => import('./components/VisitUs'))
+const Newsletter = lazy(() => import('./components/Newsletter'))
+const Footer = lazy(() => import('./components/Footer'))
 
 function App() {
   return (
@@ -15,15 +18,20 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Menu />
-        <WhyDifferent />
-        <CtaBanner />
-        <Testimonials />
-        <VisitUs />
-        <Newsletter />
+        <Suspense fallback={null}>
+          <About />
+          <Menu />
+          <WhyDifferent />
+          <Gallery />
+          <CtaBanner />
+          <Testimonials />
+          <VisitUs />
+          <Newsletter />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </>
   )
 }
