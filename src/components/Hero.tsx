@@ -24,7 +24,7 @@ export default function Hero() {
         alt=""
         aria-hidden="true"
         priority
-        className="absolute inset-0 opacity-45 saturate-75 blur-[1px]"
+        className="absolute inset-0 opacity-35 saturate-75 blur-xl"
       />
       {/* Background layer: subtle scattered-bean texture, unified across the whole scene */}
       <div
@@ -32,18 +32,15 @@ export default function Hero() {
         aria-hidden="true"
         style={{ backgroundImage: BEAN_PATTERN, backgroundSize: '90px 90px' }}
       />
-      {/* One soft vignette instead of two competing linear bands — reads as a single scene */}
+      {/* Single layered gradient (warm glow + vignette composited together) instead of a
+          separate blurred shape — no element edges means no visible seam between zones. */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 90% 80% at 62% 45%, rgba(26,16,10,0.25) 0%, rgba(26,16,10,0.55) 45%, rgba(26,16,10,0.94) 85%)',
+            'radial-gradient(ellipse 65% 75% at 66% 50%, rgba(201,162,107,0.4) 0%, rgba(201,162,107,0.12) 45%, transparent 70%), ' +
+            'radial-gradient(ellipse 130% 110% at 50% 50%, rgba(26,16,10,0.1) 0%, rgba(26,16,10,0.5) 55%, rgba(26,16,10,0.95) 100%)',
         }}
-      />
-      {/* Warm glow anchored on the bean — ties the photo and 3D areas into one lit environment */}
-      <div
-        className="absolute top-1/2 right-[8%] h-[70%] w-[55%] -translate-y-1/2 rounded-full opacity-40 blur-3xl md:right-[4%]"
-        style={{ background: 'radial-gradient(circle, rgba(201,162,107,0.5) 0%, transparent 70%)' }}
         aria-hidden="true"
       />
 
