@@ -60,11 +60,13 @@ export default function Hero() {
             <HeroCanvas />
           </Suspense>
         ) : (
+          // Mobile: bean sits below/behind the text as a corner accent instead of
+          // overlapping it — there isn't enough width for a true side-by-side split.
           <div
-            className="absolute inset-y-0 right-[8%] left-[48%] flex items-center justify-center opacity-70 md:left-[55%]"
+            className="absolute right-[-8%] bottom-[-4%] flex h-[42%] w-[65%] items-center justify-center opacity-25"
             aria-hidden="true"
           >
-            <svg viewBox="0 0 200 220" className="h-2/3 max-h-80 w-auto animate-[float_6s_ease-in-out_infinite]">
+            <svg viewBox="0 0 200 220" className="h-full w-auto animate-[float_6s_ease-in-out_infinite]">
               <path
                 d="M100 20 C60 20 25 55 25 95 C25 145 65 175 100 205 C135 175 175 145 175 95 C175 55 140 20 100 20 Z"
                 fill="#4a2e1e"
