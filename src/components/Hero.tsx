@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useMediaQuery } from '../hooks/useMediaQuery'
 import MagneticButton from './MagneticButton'
 import ResponsiveImage from './ResponsiveImage'
+import FallingBeans from './FallingBeans'
 
 const HeroCanvas = lazy(() => import('../three/HeroCanvas'))
 
@@ -43,6 +44,10 @@ export default function Hero() {
         }}
         aria-hidden="true"
       />
+
+      {/* Roasted beans continuously spilling down the full hero — pure CSS/SVG so it
+          works identically whether the 3D canvas is mounted or not. */}
+      {!reduceMotion && <FallingBeans />}
 
       {/* Midground: full-bleed 3D canvas so sparkles/glow feel like one continuous scene;
           the bean itself is positioned toward the right within it (see CoffeeBean). */}
