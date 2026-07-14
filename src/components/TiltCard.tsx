@@ -6,9 +6,10 @@ import { useMediaQuery } from '../hooks/useMediaQuery'
 interface TiltCardProps {
   children: ReactNode
   className?: string
+  onClick?: () => void
 }
 
-export default function TiltCard({ children, className }: TiltCardProps) {
+export default function TiltCard({ children, className, onClick }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null)
   const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
 
@@ -43,6 +44,7 @@ export default function TiltCard({ children, className }: TiltCardProps) {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
       style={{
         rotateX: reduceMotion ? 0 : rotateX,
         rotateY: reduceMotion ? 0 : rotateY,

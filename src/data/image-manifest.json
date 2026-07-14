@@ -47,9 +47,33 @@
     "width": 912,
     "height": 1150
   },
+  "/product-affogato.jpg": {
+    "webp": "/product-affogato.webp",
+    "lqip": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4IKAAAABQBQCdASoYABgAPwF0rlArJyQisBgIAWAgCUATplmAKSxFWix8NrRQHOvL38H9DQYjdSAA/dIJFMCwt1Kcz/Y+VmWKZrs3XR2VbqW+Kbv0O4TNwB8In2jnjYharaqarBzbKXO1rVgjOljyUcq8eNWR6rW16Ab0jY98H77w9Ytudwba1pvT0xc/2N1Gh7EcKS4M3oatAmUl6jkuEW+GhAAA",
+    "width": 600,
+    "height": 600
+  },
+  "/product-almond-biscotti.jpg": {
+    "webp": "/product-almond-biscotti.webp",
+    "lqip": "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAABQBgCdASoYABgAPwF2sVOrJyQiqAgBYCAJQBOmcejOqwJzoMC49NumH5rSVDuXooUL2W9hS/1IEwqZoAD91amhcNvlgeq5wc6Tw4BH21j1igfkBLlagdHfLho0p5fKx4Onz1K/sJPnpEWXeHQOj0w2l5lSHGZiYb0npVP0uJ5tUfl/jV1cY5KCjhCKn2L45FlnmNiB89cnlcIPhmoHzRrfqSH5oWPLpa89XpmBo72Ku+gHkvmCAMlyyIuPMUrRiGBi027kM6djXqyy3YFzMtWpGNfcN+Xy1MmPy89kcFitd2equalBb7BxKih6WyITFuAjgiBKqWLQAA==",
+    "width": 600,
+    "height": 600
+  },
+  "/product-basbousa.jpg": {
+    "webp": "/product-basbousa.webp",
+    "lqip": "data:image/webp;base64,UklGRvoAAABXRUJQVlA4IO4AAABwBQCdASoYABgAPwF2s1OrJySiqAgBYCAJbACsAAs6qgKjIvF4jIVoHzDw4OLKzGOb5/6QAP678cMUnJWND6OWDOkmEn+vdXS1FpAMdV7NXcjx1tLMhVWIwMjqhpobkUp5IPvwcDiKWIwvlKSahguPEPsji4ETYIivgcJcjgxu7C66v9mcU5XJe5yFfwzN95ZcEa/W+EhVDynmHLkcsaYfw4Ny4oNB0kjRSy+b68uOv27C77v2sHcIwCqh/9ZApJPeFTclviFkXQOvGHZSeR83IuAxvaFMqKczzLSmqVwvls2/s4nRVWXzmkziuAAA",
+    "width": 600,
+    "height": 600
+  },
   "/product-cappuccino.jpg": {
     "webp": "/product-cappuccino.webp",
     "lqip": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAACwBQCdASoYABgAPwFoqU+rJaOiMBgMAWAgCUAXZmFE4AHHJ3gJlLfDdqFoed1o2Wi51agpQAAA/c0tZ6/VS4K6gl8nr4uTWaJuUQjYbnLZcZSX/YONhXmTTVA67YSeDKgHMW4Jcekb5H65cdp60F8NptsNAfrnMQRE0lnOFW0vZU8YDVKFswIqzJoetqXT0qJYOk/GPvnl2y+ojU0VHW8HI8Y0qutHumbQAA==",
+    "width": 600,
+    "height": 600
+  },
+  "/product-cardamom-bun.jpg": {
+    "webp": "/product-cardamom-bun.webp",
+    "lqip": "data:image/webp;base64,UklGRvYAAABXRUJQVlA4IOoAAACwBQCdASoYABgAPwF2slOrJyQiqAgBYCAJZACw7ywA0PiVTnyLCe859m5hAudW7Fgy76jiNQAA/t31EK6Mp3P5wWBE483mcRvu2Gl2OLB7MS5qtrvyfjd1Rv8Gir5hz6UiJtQQ+ydPTiR8woXMBzbG6BW1HzoarUykWUr5pFEQvPslJVL5J7OrD476MGO8QF9AY5N9dRR9d0JmDvpgxc+QZJyzMqUZoHrG74OB36Um/nyzsfoe8TkDhA+sC8wxuwv6dTp7EMucvGl9qg4QYvz3MVDVWacgdZqZ9aOWjfDEwEAj0vWYAzBw0AA=",
     "width": 600,
     "height": 600
   },
@@ -59,15 +83,93 @@
     "width": 600,
     "height": 600
   },
+  "/product-choc-chip-cookie.jpg": {
+    "webp": "/product-choc-chip-cookie.webp",
+    "lqip": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAQBACdASoYABgAPwFkq1ArJSOisBgMAWAgCUAAHg6LIChKQVPxTBsiYAD++RSAJVM/TSrZUl0eXOXMaRTo+wWmtW2xJly8wfIGT74a33ddectmmzCUaOY+OtJsfZUQPDgplCiAADFwiA9iggjlUmTvVrnfyGe1+QnjwySqV9AfUR47RUQOqr7JjDNFgAi4AAA=",
+    "width": 600,
+    "height": 600
+  },
+  "/product-cinnamon-roll.jpg": {
+    "webp": "/product-cinnamon-roll.webp",
+    "lqip": "data:image/webp;base64,UklGRjIBAABXRUJQVlA4ICYBAAAQBgCdASoYAB8APwFoq08rJaOiMAgBYCAJQAECCQAlaPdgmAC16YMJThPWh7XKkUttp2wwZGDIG1QA+SzrQF8n2drPIOTbTHGhzhvLkLoL7R/5z69sbyT4zduMK1RW6q5TqIBSsyyp18GloAFwuo+73Dwjrd3/3rTGmvnZDiSDTl570pUkPrzD2AnQyxsIZVVZFNroJHky3TMhEUSv8EoXKOQOsx74Vm4wf8RJRoCcVF0JdOHYq6cWSIxIAyxpLpbxKV3Pea9QsZLm+DBVx4iH68WGVGTfNR/kTcMK9xiDVVx0QRjf0N/PEvrJ1FGXWJzAJAYU7xvRHk7/vvkDxPKCA4fmTe1nUKHpYYH/CSSWMiEP31B44vSCptBcFMOBaprNm6akqAA=",
+    "width": 900,
+    "height": 1169
+  },
+  "/product-cold-brew.jpg": {
+    "webp": "/product-cold-brew.webp",
+    "lqip": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAABwBQCdASoYABgAPwFmrU8rJSQiMBgMAWAgCWoAsOwR//1GW5hHkvSCM0VYgtxeUr3Uk5/AAP5l/z2AyeUBXYmj4bYWdkTIBHWheaIvdRD5DtyDcequCtgfBDfs89uM8O03oFnla+g02PrZd5zZL7h6AHoS3DcF/nM1er32tBWska4HKbAgo1yDvbAsuFPsAd4TcWg79SRS6lMTeorldNjKxaoQAA==",
+    "width": 600,
+    "height": 600
+  },
   "/product-espresso.jpg": {
     "webp": "/product-espresso.webp",
     "lqip": "data:image/webp;base64,UklGRrAAAABXRUJQVlA4IKQAAABQBQCdASoYABgAPwFurlCrJiQiqA1RYCAJbADGfYvCcLTECZrtATBmaEHc7YkCsbkYEYAA/tjaJRkXH8R3GcfAiMlFcFJmtGgTnwQehbzVv8xdRjT0q8UnuGio2QoGZ7cWODKXWHjoKDh3tER3rT3d4h6tI/ZUluj0/jAeZw0ArkFs0QexARw34woUaLxWeEuOGABOazqPy6nXEtxUVfIxOEAAAA==",
     "width": 600,
     "height": 600
   },
+  "/product-flat-white.jpg": {
+    "webp": "/product-flat-white.webp",
+    "lqip": "data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAABwBQCdASoYABgAPv1krk6rJSSiMBgMAWAfiWYAxNmMUEO10a7EgD2uLMXsvFLVuEbsGPEAAP75CqUmXmXZbDqIQf/2S5uUIk+7ZqZMRUm4LwAcYCedUBiSSa9PA68ChYXr0Vv4/nCcL8K1xvt47KvMh6AD+VZ8NnIOSuY7dZ4LL6qlJM/PG0FudMkyZt5x+slB4gB5Q2YyHHcFSwqloX9Yv8A2q3lm/I1oMr7LxMP+H2+RhAAAAA==",
+    "width": 600,
+    "height": 600
+  },
+  "/product-iced-americano.jpg": {
+    "webp": "/product-iced-americano.webp",
+    "lqip": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAADwBACdASoYABgAPwFoqk+rJaOiMBgMAWAgCWUAz2RX72tD3cUUY3dzZU6HeoZmhAAA/vkVG3HwvWtTOSgIVRz5JKpF6H2LhW/vVUkB+JvtuIBRMVd+hFVOg8HndKqhAHFIf0g+MtGIrOJPlOZ2BsaNXBy5LNwddgweFKBnAAA=",
+    "width": 600,
+    "height": 600
+  },
+  "/product-iced-caramel-macchiato.jpg": {
+    "webp": "/product-iced-caramel-macchiato.webp",
+    "lqip": "data:image/webp;base64,UklGRs4AAABXRUJQVlA4IMIAAACQBQCdASoYABgAPwFsr1GrJaQisBgIAWAgCWwAuwAMOM/sqB5hba+fbL4/yTEN+GDtuG1e+AD9dIQkJ1o91Ic760KXvz5LrRjKKVClTL0GibeUBlQeFmnfEX3v9egSPvVZZuol6Gi6Qy09U9kEUHKGZGUWRJYVe3yJ3dBZdgFqkUs+Fn0WKSQFsrtdVnplrY7mb0xKmc554oFX32qldDrirABLm5DOo1ePQgNiFGrInSnTv3dQ+WpeAbc1M+RywAAAAA==",
+    "width": 600,
+    "height": 600
+  },
+  "/product-iced-latte.jpg": {
+    "webp": "/product-iced-latte.webp",
+    "lqip": "data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAACwBACdASoYABgAPwF2slQrJySjKAgBYCAJZACxHyGBB3Pm354mkSYCM4MrwS0sAPzs5ub8YTzHoXKvLhsxgsZ5Z1ZXJHx4/IbDoIy/SvsQHFte2zIATnfQQ+le6G2Y7QJ84t432NGcUKjk9g5w5ZAp3kx09lKqDQ0SwUTpfioyTeRC+T1UmUeCTk8hZVnCSK+j6gb9fDODEPuOut+lqf1KTx58OFZPlQ2rkKy7gYsYcwNhbg3GEU41l9dgrlXBgYvceBFO+wAAAA==",
+    "width": 600,
+    "height": 600
+  },
+  "/product-iced-mocha.jpg": {
+    "webp": "/product-iced-mocha.webp",
+    "lqip": "data:image/webp;base64,UklGRqoAAABXRUJQVlA4IJ4AAAAQBQCdASoYABgAPwFurlCrJiQiqA1RYCAJQBkLgb4JQY5eq8rZbbPttY7moU6vDVOAAP6b444W/l+tAGk4zuRVl2UDkwAqHn8pyPBDCHTKEqWmT+dAzilxlirBSUANt0HuE9081W+T2eRF+uLhKM5sMpIM2Kni2kvl10AtH1pqjN0+hIiN3tnVH2vEvEdoVwWQAgK8hIa0QUEUMDoAAA==",
+    "width": 600,
+    "height": 600
+  },
+  "/product-iced-spanish-latte.jpg": {
+    "webp": "/product-iced-spanish-latte.webp",
+    "lqip": "data:image/webp;base64,UklGRiQBAABXRUJQVlA4IBgBAADQBQCdASoYABgAPwFyrFGrJqQiqA1RYCAJQAF+XBgcUkYSzs/RPnYgF4ldP07IF1Y8tmutpnQAAPdaz92w3HGyNSsSBtETUzUwG62+eKyohHJ67RmB7Rve57HSp+HeKUhAfg7wLDT16EVfjQB59uJWKINSAjk51b99AnMaAX9yfrIPbJ38clvj+04XY3f6uJXtEXrIn7BTlfNFrMeq/+pPo+FKPQRwz36qo2Vc/udy1ayN7G7+pP/1ZEJyBOQsVV0QtfbPatZunOZ7whqHcAuZYleL89kOwUzYE8aXF9upBu0Z3wNJzTToRidLetHoijcM6C0Nm+18ViVxI/Cpxyr1F6rCR3fUXHN94wJ3biF/vDb8FfulAsAA",
+    "width": 600,
+    "height": 600
+  },
+  "/product-lemon-cake.jpg": {
+    "webp": "/product-lemon-cake.webp",
+    "lqip": "data:image/webp;base64,UklGRgABAABXRUJQVlA4IPQAAAAQBgCdASoYABgAPwFsqU6rJiOiMBgMAWAgCWwAnTKEgNgQS8GuNA8+yx5dVCyVx/YPHjkPbd+5A0AA/s3l2i7OnTPuwhkfOA04kjFY0Seu8PoAtHnS7iYbDBv4OUZydvgDn5UDtVe5+La1Fa5wHE77GBkcL8fb32HHjfL9GRvj//IX8/aTC7WidvisKLOb9zrVOnmq1sSZGGqAgc8ysAZYAnNS5Fc3SGk9EAgsSqfohQoTTJ0TRTaXfXPfMSSn+0oFswHvhkng/TVg3B5mXzctb1EcDKNuEmn4vqckZfxzyEvzNblHnlO/YyRR8kTDDzHIAAAA",
+    "width": 600,
+    "height": 600
+  },
   "/product-macchiato.jpg": {
     "webp": "/product-macchiato.webp",
     "lqip": "data:image/webp;base64,UklGRtoAAABXRUJQVlA4IM4AAABQBQCdASoYABgAPwFysVIrJqSiqAqpYCAJQBOgMZjInbmRXxjNrR9SKJEOGBc/lScbTBAA9ynu+Zy+LYgfpE8PzO/nCpHAub0WxPSkNye4C0bdpR8cU3G95z85D9lzX2vxjlGSJqIzB3tvPj+3WnI87H31/t/vejXXyRX30Ncg6dZRtrATf252YCBprF2eETZhv6u7JlOeeVM8ThDHxSf7XPGxptLlmCCYXK+fknyCmh83CrnJ+SCXDz1jaDYDnROg+c9/mif0EvB42YVQAA==",
+    "width": 600,
+    "height": 600
+  },
+  "/product-mocha.jpg": {
+    "webp": "/product-mocha.webp",
+    "lqip": "data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAABwBQCdASoYABgAPwF0slOrJqQiqAgBYCAJQBgdv/wDduzBRr/2LliPS2ROiArGolym5vsAAP6tXlBInXzl1TjDF+baE5ADM9WzsnJz1CnfcJTbo9DYbgNp65v2BxcmqEFEAvS7Iu8+CptVpK/BHBxCvI1hHlr2sBtiWBXJ7NNNZHkFZ45yN4Yzl9+rVENtHg+3As+VZCAdihKwo5JLpM1mU1bkUJt0+8b+qhDZUNevsgF2be7B7hZTsjJ7bJ85GqSnv8ORZCoDHWrUWmu6FdAAMpka72QA",
+    "width": 600,
+    "height": 600
+  },
+  "/product-pistachio-croissant.jpg": {
+    "webp": "/product-pistachio-croissant.webp",
+    "lqip": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAABwBQCdASoYABgAPwFyq1GrJqOiqA1RYCAJagC/OA3u+yrq2n3dXm8Qxxh/uXOGV3RqFcgAAOJZWUdZ1zvExbtFLqS4REyQAl5vRomfAVu7U8ALHxHNUIbLUGlMgLOYT79DU3LNN5/V1GyG9cpSUHprtLKlaOf0+cVD2CPdOXgxUZ2ea5T9So4A3Fh62+mVALhwsp1O+4jEVQf1xQua0toIdpNzqAQvGO4rvU8zZoAAAA==",
+    "width": 600,
+    "height": 600
+  },
+  "/product-turkish-coffee.jpg": {
+    "webp": "/product-turkish-coffee.webp",
+    "lqip": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAAAQBQCdASoYABgAPwF4tFOrJySiqAgBYCAJYgCdABGJlI9IULAL6i8wyNx3Ua8ONW5MAP7sOsBkK1WFBITvhgGFnDto/1GiP6piF6iZ/Xn1vpTXokUY2velbDuJqaliMSOzP8oPoYxN9UThho3jtBHhJys6jqSuc62gNtZWs7uJL9lsFo/VjvuVHEhVdGQTGruGHpB55ckUcinQ0AA=",
     "width": 600,
     "height": 600
   },
