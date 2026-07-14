@@ -24,23 +24,36 @@ export default function Hero() {
         alt=""
         aria-hidden="true"
         priority
-        className="absolute inset-0 opacity-60 saturate-90"
+        className="absolute inset-0 opacity-45 saturate-75 blur-[1px]"
       />
-      {/* Background layer: subtle scattered-bean texture */}
+      {/* Background layer: subtle scattered-bean texture, unified across the whole scene */}
       <div
         className="absolute inset-0 opacity-[0.06]"
         aria-hidden="true"
         style={{ backgroundImage: BEAN_PATTERN, backgroundSize: '90px 90px' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-coffee-950 via-coffee-950/55 to-coffee-950/80" />
-      <div className="absolute inset-0 bg-gradient-to-b from-coffee-950/80 via-transparent to-coffee-950/90" />
+      {/* One soft vignette instead of two competing linear bands — reads as a single scene */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 90% 80% at 62% 45%, rgba(26,16,10,0.25) 0%, rgba(26,16,10,0.55) 45%, rgba(26,16,10,0.94) 85%)',
+        }}
+      />
+      {/* Warm glow anchored on the bean — ties the photo and 3D areas into one lit environment */}
+      <div
+        className="absolute top-1/2 right-[8%] h-[70%] w-[55%] -translate-y-1/2 rounded-full opacity-40 blur-3xl md:right-[4%]"
+        style={{ background: 'radial-gradient(circle, rgba(201,162,107,0.5) 0%, transparent 70%)' }}
+        aria-hidden="true"
+      />
 
-      {/* Midground: 3D bean bleeds off the right edge — asymmetric, not centered */}
+      {/* Midground: full-bleed 3D canvas so sparkles/glow feel like one continuous scene;
+          the bean itself is positioned toward the right within it (see CoffeeBean). */}
       <motion.div
         initial={{ opacity: 0, scale: 0.7, rotate: -8 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-        className="pointer-events-none absolute inset-y-0 right-[-8%] left-[48%] z-0 md:left-[55%]"
+        className="pointer-events-none absolute inset-0 z-0"
       >
         {show3D ? (
           <Suspense fallback={null}>
@@ -48,7 +61,7 @@ export default function Hero() {
           </Suspense>
         ) : (
           <div
-            className="absolute inset-0 flex items-center justify-center opacity-70"
+            className="absolute inset-y-0 right-[8%] left-[48%] flex items-center justify-center opacity-70 md:left-[55%]"
             aria-hidden="true"
           >
             <svg viewBox="0 0 200 220" className="h-2/3 max-h-80 w-auto animate-[float_6s_ease-in-out_infinite]">

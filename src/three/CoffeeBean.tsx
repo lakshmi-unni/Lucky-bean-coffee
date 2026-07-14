@@ -142,24 +142,31 @@ export default function CoffeeBean() {
   const groupRef = useRef<Group>(null)
   const { viewport } = useThree()
 
+  // Canvas is now full-bleed across the hero; offset the bean itself toward the
+  // right so the asymmetric composition still holds within the wider frame.
+  const xOffset = viewport.width * 0.24
+
   useFrame((state) => {
     if (!groupRef.current) return
-    const targetY = 0.15 + (state.pointer.x * Math.PI) / 10
-    const targetX = (-state.pointer.y * Math.PI) / 14
+    // Continuous slow auto-rotation so the 3D-ness reads immediately on load,
+    // not only once the visitor moves their cursor over it.
+    const autoSpin = state.clock.elapsedTime * 0.18
+    const targetY = 0.15 + autoSpin + (state.pointer.x * Math.PI) / 12
+    const targetX = (-state.pointer.y * Math.PI) / 16
     groupRef.current.rotation.y += (targetY - groupRef.current.rotation.y) * 0.04
     groupRef.current.rotation.x += (targetX - groupRef.current.rotation.x) * 0.04
   })
 
-  const scale = Math.min(viewport.width / 6, 1.6)
+  const scale = Math.min(viewport.width / 7, 1.75)
 
   return (
     <>
       <ambientLight intensity={0.6} />
       <directionalLight position={[3, 4, 5]} intensity={1.8} color="#fff2df" castShadow />
-      <pointLight position={[-3, -1, 2]} intensity={0.8} color="#c97c3d" />
-      <pointLight position={[2, -2, 3]} intensity={0.4} color="#fff8ec" />
+      <pointLight position={[xOffset - 3, -1, 2]} intensity={0.8} color="#c97c3d" />
+      <pointLight position={[xOffset + 2, -2, 3]} intensity={0.5} color="#fff8ec" />
 
-      <group ref={groupRef} scale={scale}>
+      <group ref={groupRef} position={[xOffset, 0, 0]} scale={scale}>
         <Float speed={1.4} rotationIntensity={0.45} floatIntensity={0.8}>
           <group rotation={[0.05, 0.15, 0]}>
             <BeanMesh />
@@ -168,7 +175,7 @@ export default function CoffeeBean() {
       </group>
 
       <ContactShadows
-        position={[0, -1.15 * scale, 0]}
+        position={[xOffset, -1.15 * scale, 0]}
         opacity={0.4}
         scale={3.5 * scale}
         blur={2.6}
@@ -177,9 +184,9 @@ export default function CoffeeBean() {
       />
 
       <Sparkles
-        count={22}
-        scale={[1.6 * scale, 2.4 * scale, 1.2 * scale]}
-        position={[0, 1.4 * scale, 0]}
+        count={30}
+        scale={[1.8 * scale, 2.6 * scale, 1.2 * scale]}
+        position={[xOffset, 1.4 * scale, 0]}
         size={3}
         speed={0.25}
         opacity={0.5}
