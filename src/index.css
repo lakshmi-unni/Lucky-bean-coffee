@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/sacramento/400.css";
+@import "@fontsource/poppins/300.css";
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/500.css";
+@import "@fontsource/poppins/600.css";
+
+@theme {
+  --font-script: "Sacramento", cursive;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Poppins", sans-serif;
+
+  --color-coffee-950: #201209;
+  --color-coffee-900: #2b1810;
+  --color-coffee-800: #3a2116;
+  --color-coffee-700: #4a2c17;
+  --color-coffee-600: #6b4226;
+  --color-coffee-500: #8a5a3a;
+  --color-coffee-400: #a97c56;
+
+  --color-cream-50: #fdf8f0;
+  --color-cream-100: #faf3e7;
+  --color-cream-200: #f4e9d8;
+
+  --color-gold-400: #e3b769;
+  --color-gold-500: #d9a441;
+  --color-gold-600: #c98f2c;
+
+  --color-body-text: #7a6a5c;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-coffee-700);
+  background: var(--color-cream-50);
+  -webkit-font-smoothing: antialiased;
+}

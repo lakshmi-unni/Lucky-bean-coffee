@@ -1,0 +1,13 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bean-scene-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5174,
+      "autoPort": true,
+      "cwd": "D:/2026 code challenge/claude/bean coffee landing page"
+    }
+  ]
+}
