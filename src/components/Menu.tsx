@@ -54,9 +54,41 @@ const PRODUCTS: Product[] = [
 
 const CATEGORIES: Category[] = ['All', 'Hot', 'Iced', 'Bakery']
 
+function orderMessage(product: Product) {
+  return `Hi Lucky Bean, I'd like to order: ${product.name} (${product.price})`
+}
+
 function whatsAppOrderUrl(product: Product) {
-  const message = `Hi Lucky Bean, I'd like to order: ${product.name} (${product.price})`
-  return `https://wa.me/971504993644?text=${encodeURIComponent(message)}`
+  return `https://wa.me/971504993644?text=${encodeURIComponent(orderMessage(product))}`
+}
+
+/**
+ * WhatsApp's own click-to-chat links only support pre-filled text, not images —
+ * that's a platform limitation. The Web Share API is the real workaround: it opens
+ * the device's native share sheet with the product photo attached, and the
+ * customer picks WhatsApp from there. Falls back to the text-only wa.me link on
+ * desktop/unsupported browsers.
+ */
+async function handleOrder(product: Product) {
+  const message = orderMessage(product)
+
+  if (navigator.share) {
+    try {
+      const response = await fetch(product.image)
+      const blob = await response.blob()
+      const file = new File([blob], `${product.name}.jpg`, { type: blob.type || 'image/jpeg' })
+
+      if (!navigator.canShare || navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: product.name, text: message })
+        return
+      }
+    } catch (err) {
+      // User cancelled the share sheet, or share/fetch failed — fall through to WhatsApp link.
+      if (err instanceof Error && err.name === 'AbortError') return
+    }
+  }
+
+  window.open(whatsAppOrderUrl(product), '_blank', 'noopener,noreferrer')
 }
 
 export default function Menu() {
@@ -142,15 +174,16 @@ export default function Menu() {
                       <p className="mt-2 text-sm font-semibold text-coffee-700">
                         {product.price}
                       </p>
-                      <a
-                        href={whatsAppOrderUrl(product)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="mt-4 block w-full rounded-full bg-gold-500 py-2 text-xs font-semibold text-coffee-900 transition hover:bg-gold-400"
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          void handleOrder(product)
+                        }}
+                        className="mt-4 w-full rounded-full bg-gold-500 py-2 text-xs font-semibold text-coffee-900 transition hover:bg-gold-400"
                       >
                         Order Now
-                      </a>
+                      </button>
                     </div>
                   </TiltCard>
                 </motion.div>
