@@ -26,7 +26,7 @@ export default function VisitUs() {
           <div className="overflow-hidden rounded-2xl border border-coffee-700/10 shadow-sm">
             <iframe
               title="Lucky Bean location map"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=54.3210%2C24.4530%2C54.3370%2C24.4640&layer=mapnik&marker=24.4585%2C54.3290"
+              src="https://maps.google.com/maps?q=24.4585,54.3290&z=15&output=embed&hl=en"
               className="h-72 w-full md:h-full"
               loading="lazy"
             />
