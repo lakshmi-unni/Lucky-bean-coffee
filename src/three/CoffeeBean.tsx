@@ -95,9 +95,13 @@ export default function CoffeeBean() {
   const groupRef = useRef<Group>(null)
   const { viewport } = useThree()
 
-  // Canvas is full-bleed across the hero; offset the bean itself toward the
-  // right so the asymmetric composition still holds within the wider frame.
-  const xOffset = viewport.width * 0.24
+  // Canvas is full-bleed across the hero; the background mug photo sits
+  // almost dead-center horizontally (~51% of the hero width) once it's
+  // cover-cropped into the wide/short hero box, so keep the bean nearly
+  // centered too — just a touch right of the mug so it doesn't sit flush
+  // on top of it — to read as "falling toward the cup" instead of floating
+  // off to one side of it.
+  const xOffset = viewport.width * 0.04
 
   useFrame((state) => {
     if (!groupRef.current) return

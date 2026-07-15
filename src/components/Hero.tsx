@@ -66,20 +66,27 @@ export default function Hero() {
           // Mobile: bean sits below/behind the text as a corner accent instead of
           // overlapping it — there isn't enough width for a true side-by-side split.
           <div
-            className="absolute right-[-8%] bottom-[-4%] flex h-[42%] w-[65%] items-center justify-center opacity-25"
+            className="absolute right-[-8%] bottom-[-4%] flex h-[42%] w-[65%] items-center justify-center opacity-45"
             aria-hidden="true"
           >
             <svg viewBox="0 0 200 220" className="h-full w-auto animate-[float_6s_ease-in-out_infinite]">
-              <path
-                d="M100 20 C60 20 25 55 25 95 C25 145 65 175 100 205 C135 175 175 145 175 95 C175 55 140 20 100 20 Z"
-                fill="#4a2e1e"
+              <ellipse
+                cx="100"
+                cy="110"
+                rx="72"
+                ry="100"
+                fill="#8a5a35"
+                stroke="#c9a26b"
+                strokeWidth="2"
+                strokeOpacity="0.7"
               />
               <path
-                d="M100 55 Q92 100 100 150 Q108 175 100 200"
-                stroke="#c9a26b"
-                strokeWidth="7"
+                d="M100 30 Q84 110 100 190"
+                stroke="#2b1810"
+                strokeWidth="9"
                 strokeLinecap="round"
                 fill="none"
+                opacity="0.7"
               />
             </svg>
           </div>
