@@ -91,7 +91,16 @@ function BeanMesh() {
   )
 }
 
-export default function CoffeeBean() {
+interface CoffeeBeanProps {
+  /** Narrow/portrait viewports: the text stack takes the full width above
+   * the fold instead of sharing it side-by-side, so the bean needs to sit
+   * lower to avoid rendering through the paragraph — and viewport.width
+   * (in Three.js world units) shrinks a lot in portrait aspect, so the
+   * normal width-based scale would render it almost invisibly small. */
+  compact?: boolean
+}
+
+export default function CoffeeBean({ compact = false }: CoffeeBeanProps) {
   const groupRef = useRef<Group>(null)
   const { viewport } = useThree()
 
@@ -102,6 +111,10 @@ export default function CoffeeBean() {
   // on top of it — to read as "falling toward the cup" instead of floating
   // off to one side of it.
   const xOffset = viewport.width * 0.04
+  // viewport.height is derived purely from camera fov/distance, so it stays
+  // ~constant across screen sizes — a reliable anchor for nudging the bean
+  // down below the stacked mobile text without touching the desktop layout.
+  const yOffset = compact ? -viewport.height * 0.2 : 0
 
   useFrame((state) => {
     if (!groupRef.current) return
@@ -116,17 +129,21 @@ export default function CoffeeBean() {
   })
 
   // Sized down from the previous pass — this should read as a nicely-proportioned
-  // accent, not dominate the hero.
-  const scale = Math.min(viewport.width / 11, 1.15)
+  // accent, not dominate the hero. Portrait/mobile aspect ratios shrink
+  // viewport.width a lot even on a physically similar-sized screen, so give
+  // that case a floor rather than letting the same formula render a speck.
+  const scale = compact
+    ? Math.min(Math.max(viewport.width / 11, 0.42), 1.15)
+    : Math.min(viewport.width / 11, 1.15)
 
   return (
     <>
       <ambientLight intensity={0.6} />
       <directionalLight position={[3, 4, 5]} intensity={1.8} color="#fff2df" castShadow />
-      <pointLight position={[xOffset - 3, -1, 2]} intensity={0.8} color="#c97c3d" />
-      <pointLight position={[xOffset + 2, -2, 3]} intensity={0.5} color="#fff8ec" />
+      <pointLight position={[xOffset - 3, yOffset - 1, 2]} intensity={0.8} color="#c97c3d" />
+      <pointLight position={[xOffset + 2, yOffset - 2, 3]} intensity={0.5} color="#fff8ec" />
 
-      <group ref={groupRef} position={[xOffset, 0, 0]} scale={scale}>
+      <group ref={groupRef} position={[xOffset, yOffset, 0]} scale={scale}>
         <Float speed={1.4} rotationIntensity={0.45} floatIntensity={0.8}>
           <group rotation={[0.05, 0.15, 0]}>
             <BeanMesh />
@@ -135,7 +152,7 @@ export default function CoffeeBean() {
       </group>
 
       <ContactShadows
-        position={[xOffset, -1.15 * scale, 0]}
+        position={[xOffset, yOffset - 1.15 * scale, 0]}
         opacity={0.4}
         scale={3.5 * scale}
         blur={2.6}
@@ -146,7 +163,7 @@ export default function CoffeeBean() {
       <Sparkles
         count={30}
         scale={[1.8 * scale, 2.6 * scale, 1.2 * scale]}
-        position={[xOffset, 1.4 * scale, 0]}
+        position={[xOffset, yOffset + 1.4 * scale, 0]}
         size={3}
         speed={0.25}
         opacity={0.5}

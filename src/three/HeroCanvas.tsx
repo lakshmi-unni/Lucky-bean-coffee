@@ -1,7 +1,13 @@
 import { Canvas } from '@react-three/fiber'
 import CoffeeBean from './CoffeeBean'
 
-export default function HeroCanvas() {
+interface HeroCanvasProps {
+  /** Narrow/portrait screens: the bean needs a size and vertical-position
+   * adjustment so it doesn't render too small or through the stacked text. */
+  compact?: boolean
+}
+
+export default function HeroCanvas({ compact = false }: HeroCanvasProps) {
   return (
     <Canvas
       dpr={[1, 1.75]}
@@ -9,7 +15,7 @@ export default function HeroCanvas() {
       gl={{ antialias: true, alpha: true }}
       className="!absolute inset-0"
     >
-      <CoffeeBean />
+      <CoffeeBean compact={compact} />
     </Canvas>
   )
 }

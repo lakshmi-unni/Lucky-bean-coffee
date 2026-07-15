@@ -11,9 +11,12 @@ const BEAN_PATTERN =
   "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90'><g fill='%23c9a26b' opacity='0.5'><ellipse cx='18' cy='20' rx='9' ry='13' transform='rotate(-18 18 20)'/><ellipse cx='65' cy='55' rx='7' ry='10' transform='rotate(24 65 55)'/><ellipse cx='40' cy='78' rx='6' ry='9' transform='rotate(-8 40 78)'/></g></svg>\")"
 
 export default function Hero() {
-  const canMount3D = useMediaQuery('(min-width: 768px)')
+  const isCompact = useMediaQuery('(max-width: 767px)')
   const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
-  const show3D = canMount3D && !reduceMotion
+  // The real 3D bean now renders on every screen size (it was previously
+  // swapped for a flat SVG stand-in below 768px) so mobile matches desktop
+  // exactly. Only reduced-motion users get the static fallback.
+  const show3D = !reduceMotion
 
   return (
     <section
@@ -60,11 +63,11 @@ export default function Hero() {
       >
         {show3D ? (
           <Suspense fallback={null}>
-            <HeroCanvas />
+            <HeroCanvas compact={isCompact} />
           </Suspense>
         ) : (
-          // Mobile: bean sits below/behind the text as a corner accent instead of
-          // overlapping it — there isn't enough width for a true side-by-side split.
+          // Reduced-motion fallback only: bean sits below/behind the text as a
+          // corner accent instead of overlapping it.
           <div
             className="absolute right-[-8%] bottom-[-4%] flex h-[42%] w-[65%] items-center justify-center opacity-45"
             aria-hidden="true"
