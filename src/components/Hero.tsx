@@ -25,7 +25,8 @@ export default function Hero() {
         alt=""
         aria-hidden="true"
         priority
-        className="absolute inset-0 opacity-35 saturate-75 blur-xl"
+        objectPosition="18% center"
+        className="absolute inset-0 opacity-50 saturate-90 blur-lg"
       />
       {/* Background layer: subtle scattered-bean texture, unified across the whole scene */}
       <div
