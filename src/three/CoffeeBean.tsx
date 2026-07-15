@@ -10,52 +10,59 @@ function hashNoise(x: number, y: number, z: number) {
   return s - Math.floor(s)
 }
 
-/** Heart-shaped bean body, extruded + beveled, then given an organic bumpy surface and mottled roast coloring. */
-function useHeartGeometry() {
+/**
+ * Realistic roasted-coffee-bean body: an elongated oval with the signature
+ * center crease physically carved into the surface (vertices pushed inward
+ * along a curved groove), not just a tube floating on top. Plus organic
+ * bumpiness and mottled roast coloring so it doesn't read as a smooth CAD egg.
+ */
+function useBeanGeometry() {
   return useMemo(() => {
-    const shape = new THREE.Shape()
-    // Traced bottom -> right lobe -> top notch -> left lobe -> bottom (CCW winding
-    // so ExtrudeGeometry's computed face normals point outward, toward the camera).
-    shape.moveTo(0, -0.95)
-    shape.bezierCurveTo(0, -1.5, 1.1, -1.5, 1.1, -0.72)
-    shape.bezierCurveTo(1.1, -0.05, 0.42, 0.32, 0, 0.82)
-    shape.bezierCurveTo(-0.42, 0.32, -1.1, -0.05, -1.1, -0.72)
-    shape.bezierCurveTo(-1.1, -1.5, 0, -1.5, 0, -0.95)
+    const geometry = new THREE.SphereGeometry(1, 128, 128)
+    geometry.scale(0.58, 1, 0.4) // real bean proportions: oval, flattened front-to-back
 
-    const geometry = new THREE.ExtrudeGeometry(shape, {
-      depth: 0.5,
-      bevelEnabled: true,
-      bevelThickness: 0.09,
-      bevelSize: 0.08,
-      bevelSegments: 8,
-      curveSegments: 24,
-    })
-    geometry.center()
-    geometry.computeVertexNormals()
-
-    // Bumpy, craggy roasted-bean surface: nudge each vertex along its normal by
-    // small pseudo-random amounts instead of leaving a perfectly smooth CAD surface.
     const pos = geometry.attributes.position
     const norm = geometry.attributes.normal
     const colors = new Float32Array(pos.count * 3)
     const roastLight = new THREE.Color('#6b4226')
     const roastDark = new THREE.Color('#2b1810')
+    const creaseColor = new THREE.Color('#3a2313')
     const tmpColor = new THREE.Color()
 
     for (let i = 0; i < pos.count; i++) {
-      const x = pos.getX(i)
-      const y = pos.getY(i)
-      const z = pos.getZ(i)
+      let x = pos.getX(i)
+      let y = pos.getY(i)
+      let z = pos.getZ(i)
       const nx = norm.getX(i)
       const ny = norm.getY(i)
       const nz = norm.getZ(i)
 
-      const bump = (hashNoise(x * 9, y * 9, z * 9) - 0.5) * 0.045
-      pos.setXYZ(i, x + nx * bump, y + ny * bump, z + nz * bump)
+      // The crease runs down the front face, curving gently like a real bean's score.
+      const creaseX = Math.sin(y * 2.1) * 0.05
+      const distFromCrease = x - creaseX
+      const frontFacing = Math.max(0, nz)
+      const creaseFalloff = Math.exp(-(distFromCrease * distFromCrease) / 0.01)
+      const grooveDepth = 0.17 * creaseFalloff * frontFacing
 
-      // Mottled roast: blend two brown tones by a second, lower-frequency noise field.
+      // Physically carve the groove by pushing vertices inward along their normal.
+      x -= nx * grooveDepth
+      y -= ny * grooveDepth
+      z -= nz * grooveDepth
+
+      // Organic roasted bumpiness on top of the carved base.
+      const bump = (hashNoise(x * 10, y * 10, z * 10) - 0.5) * 0.03
+      x += nx * bump
+      y += ny * bump
+      z += nz * bump
+
+      pos.setXYZ(i, x, y, z)
+
+      // Mottled roast tone, darkening toward the base of the groove.
       const mottle = hashNoise(x * 2.5, y * 2.5, z * 2.5)
       tmpColor.copy(roastDark).lerp(roastLight, mottle)
+      if (creaseFalloff > 0.25 && frontFacing > 0.25) {
+        tmpColor.lerp(creaseColor, Math.min(1, creaseFalloff * frontFacing * 1.3))
+      }
       colors[i * 3] = tmpColor.r
       colors[i * 3 + 1] = tmpColor.g
       colors[i * 3 + 2] = tmpColor.b
@@ -67,74 +74,20 @@ function useHeartGeometry() {
   }, [])
 }
 
-function useCreaseGeometry(baseRadius: number) {
-  return useMemo(() => {
-    const curve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(0, 0.68, 0.34),
-      new THREE.Vector3(0.03, 0.28, 0.4),
-      new THREE.Vector3(-0.03, -0.15, 0.42),
-      new THREE.Vector3(0.02, -0.5, 0.38),
-      new THREE.Vector3(0, -0.88, 0.28),
-    ])
-    const geometry = new THREE.TubeGeometry(curve, 40, baseRadius, 10, false)
-    // Irregular, torn-fissure look instead of a perfectly uniform tube.
-    const pos = geometry.attributes.position
-    for (let i = 0; i < pos.count; i++) {
-      const x = pos.getX(i)
-      const y = pos.getY(i)
-      const z = pos.getZ(i)
-      const jitter = 1 + (hashNoise(x * 14, y * 14, z * 14) - 0.5) * 0.5
-      pos.setXYZ(i, x, y, z * jitter)
-    }
-    pos.needsUpdate = true
-    geometry.computeVertexNormals()
-    return geometry
-  }, [baseRadius])
-}
-
-function useSideCrack(points: [number, number, number][]) {
-  return useMemo(() => {
-    const curve = new THREE.CatmullRomCurve3(points.map((p) => new THREE.Vector3(...p)))
-    return new THREE.TubeGeometry(curve, 12, 0.014, 6, false)
-  }, [points])
-}
-
 function BeanMesh() {
-  const bodyGeometry = useHeartGeometry()
-  const creaseGeometry = useCreaseGeometry(0.045)
-  const leftCrack = useSideCrack([
-    [-0.5, 0.3, 0.32],
-    [-0.7, 0.15, 0.34],
-    [-0.55, -0.05, 0.36],
-  ])
-  const rightCrack = useSideCrack([
-    [0.45, -0.35, 0.28],
-    [0.62, -0.5, 0.3],
-    [0.5, -0.68, 0.32],
-  ])
+  const bodyGeometry = useBeanGeometry()
 
   return (
-    <group>
-      <mesh castShadow receiveShadow geometry={bodyGeometry}>
-        <meshPhysicalMaterial
-          vertexColors
-          roughness={0.28}
-          metalness={0.05}
-          clearcoat={0.55}
-          clearcoatRoughness={0.2}
-          side={THREE.DoubleSide}
-        />
-      </mesh>
-      <mesh geometry={creaseGeometry}>
-        <meshStandardMaterial color="#c9a26b" roughness={0.6} metalness={0.06} side={THREE.DoubleSide} />
-      </mesh>
-      <mesh geometry={leftCrack}>
-        <meshStandardMaterial color="#150c07" roughness={0.85} side={THREE.DoubleSide} />
-      </mesh>
-      <mesh geometry={rightCrack}>
-        <meshStandardMaterial color="#150c07" roughness={0.85} side={THREE.DoubleSide} />
-      </mesh>
-    </group>
+    <mesh castShadow receiveShadow geometry={bodyGeometry}>
+      <meshPhysicalMaterial
+        vertexColors
+        roughness={0.3}
+        metalness={0.05}
+        clearcoat={0.6}
+        clearcoatRoughness={0.18}
+        side={THREE.DoubleSide}
+      />
+    </mesh>
   )
 }
 
@@ -142,22 +95,25 @@ export default function CoffeeBean() {
   const groupRef = useRef<Group>(null)
   const { viewport } = useThree()
 
-  // Canvas is now full-bleed across the hero; offset the bean itself toward the
+  // Canvas is full-bleed across the hero; offset the bean itself toward the
   // right so the asymmetric composition still holds within the wider frame.
   const xOffset = viewport.width * 0.24
 
   useFrame((state) => {
     if (!groupRef.current) return
-    // Continuous slow auto-rotation so the 3D-ness reads immediately on load,
-    // not only once the visitor moves their cursor over it.
-    const autoSpin = state.clock.elapsedTime * 0.18
-    const targetY = 0.15 + autoSpin + (state.pointer.x * Math.PI) / 12
+    // Gentle back-and-forth sweep (not a full 360° spin) so the bean's broad
+    // oval face keeps facing the camera — a flattened bean nearly disappears
+    // when it rotates edge-on, which a continuous one-direction spin would hit.
+    const autoSweep = Math.sin(state.clock.elapsedTime * 0.3) * 0.55
+    const targetY = 0.15 + autoSweep + (state.pointer.x * Math.PI) / 14
     const targetX = (-state.pointer.y * Math.PI) / 16
     groupRef.current.rotation.y += (targetY - groupRef.current.rotation.y) * 0.04
     groupRef.current.rotation.x += (targetX - groupRef.current.rotation.x) * 0.04
   })
 
-  const scale = Math.min(viewport.width / 7, 1.75)
+  // Sized down from the previous pass — this should read as a nicely-proportioned
+  // accent, not dominate the hero.
+  const scale = Math.min(viewport.width / 11, 1.15)
 
   return (
     <>
