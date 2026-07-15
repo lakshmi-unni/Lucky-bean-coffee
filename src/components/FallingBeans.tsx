@@ -15,8 +15,8 @@ function Bean({ className }: { className?: string }) {
   )
 }
 
-// Fixed, hand-tuned spread rather than Math.random() so beans don't clump or
-// shift between renders — left position (%), size (px), duration (s), delay (s), drift (px), spin.
+// Hand-tuned rather than Math.random() so beans don't clump or shift between renders.
+// left position (%), size (px), duration (s), delay (s), drift (px), spin (deg)
 const BEANS = [
   { left: 4, size: 20, duration: 11, delay: 0, drift: 18, spin: 220 },
   { left: 12, size: 14, duration: 9, delay: 2.4, drift: -14, spin: -180 },

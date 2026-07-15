@@ -13,9 +13,6 @@ const BEAN_PATTERN =
 export default function Hero() {
   const isCompact = useMediaQuery('(max-width: 767px)')
   const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
-  // The real 3D bean now renders on every screen size (it was previously
-  // swapped for a flat SVG stand-in below 768px) so mobile matches desktop
-  // exactly. Only reduced-motion users get the static fallback.
   const show3D = !reduceMotion
 
   return (
@@ -31,14 +28,12 @@ export default function Hero() {
         objectPosition="18% center"
         className="absolute inset-0 opacity-50 saturate-90 blur-lg"
       />
-      {/* Background layer: subtle scattered-bean texture, unified across the whole scene */}
       <div
         className="absolute inset-0 opacity-[0.06]"
         aria-hidden="true"
         style={{ backgroundImage: BEAN_PATTERN, backgroundSize: '90px 90px' }}
       />
-      {/* Single layered gradient (warm glow + vignette composited together) instead of a
-          separate blurred shape — no element edges means no visible seam between zones. */}
+      {/* One gradient layer, not a separate blurred shape — avoids a visible seam. */}
       <div
         className="absolute inset-0"
         style={{
@@ -49,12 +44,8 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      {/* Roasted beans continuously spilling down the full hero — pure CSS/SVG so it
-          works identically whether the 3D canvas is mounted or not. */}
       {!reduceMotion && <FallingBeans />}
 
-      {/* Midground: full-bleed 3D canvas so sparkles/glow feel like one continuous scene;
-          the bean itself is positioned toward the right within it (see CoffeeBean). */}
       <motion.div
         initial={{ opacity: 0, scale: 0.7, rotate: -8 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -66,8 +57,7 @@ export default function Hero() {
             <HeroCanvas compact={isCompact} />
           </Suspense>
         ) : (
-          // Reduced-motion fallback only: bean sits below/behind the text as a
-          // corner accent instead of overlapping it.
+          // Reduced-motion fallback: static corner accent.
           <div
             className="absolute right-[-8%] bottom-[-4%] flex h-[42%] w-[65%] items-center justify-center opacity-45"
             aria-hidden="true"
@@ -138,7 +128,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

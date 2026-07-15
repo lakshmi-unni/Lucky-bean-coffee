@@ -30,10 +30,8 @@ export default function ResponsiveImage({
     return <img src={src} alt={alt} className={className} style={style} {...rest} />
   }
 
-  // If the caller already sets a position (e.g. "absolute inset-0" to fill a hero
-  // section), don't also add "relative" — Tailwind gives both classes equal
-  // specificity, so whichever utility is later in the stylesheet silently wins,
-  // and it collapses this wrapper back into a normal in-flow, content-sized box.
+  // Don't force "relative" if the caller already set a position class (e.g.
+  // "absolute inset-0") — both at once is a Tailwind specificity conflict.
   const isPositioned = /\b(absolute|fixed|sticky)\b/.test(className ?? '')
 
   return (

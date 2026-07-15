@@ -62,13 +62,8 @@ function whatsAppOrderUrl(product: Product) {
   return `https://wa.me/971504993644?text=${encodeURIComponent(orderMessage(product))}`
 }
 
-/**
- * WhatsApp's own click-to-chat links only support pre-filled text, not images —
- * that's a platform limitation. The Web Share API is the real workaround: it opens
- * the device's native share sheet with the product photo attached, and the
- * customer picks WhatsApp from there. Falls back to the text-only wa.me link on
- * desktop/unsupported browsers.
- */
+// wa.me links can't attach images, so share the product photo via the Web
+// Share API first and fall back to the text-only WhatsApp link.
 async function handleOrder(product: Product) {
   const message = orderMessage(product)
 

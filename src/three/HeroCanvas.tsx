@@ -2,8 +2,6 @@ import { Canvas } from '@react-three/fiber'
 import CoffeeBean from './CoffeeBean'
 
 interface HeroCanvasProps {
-  /** Narrow/portrait screens: the bean needs a size and vertical-position
-   * adjustment so it doesn't render too small or through the stacked text. */
   compact?: boolean
 }
 

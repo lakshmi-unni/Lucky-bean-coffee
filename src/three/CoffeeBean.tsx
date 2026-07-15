@@ -10,12 +10,8 @@ function hashNoise(x: number, y: number, z: number) {
   return s - Math.floor(s)
 }
 
-/**
- * Realistic roasted-coffee-bean body: an elongated oval with the signature
- * center crease physically carved into the surface (vertices pushed inward
- * along a curved groove), not just a tube floating on top. Plus organic
- * bumpiness and mottled roast coloring so it doesn't read as a smooth CAD egg.
- */
+// Elongated oval with a center crease carved into the surface, plus bump noise
+// and mottled roast coloring so it doesn't read as a smooth CAD egg.
 function useBeanGeometry() {
   return useMemo(() => {
     const geometry = new THREE.SphereGeometry(1, 128, 128)
@@ -44,7 +40,7 @@ function useBeanGeometry() {
       const creaseFalloff = Math.exp(-(distFromCrease * distFromCrease) / 0.01)
       const grooveDepth = 0.17 * creaseFalloff * frontFacing
 
-      // Physically carve the groove by pushing vertices inward along their normal.
+      // Carve the groove by pushing vertices inward along their normal.
       x -= nx * grooveDepth
       y -= ny * grooveDepth
       z -= nz * grooveDepth
@@ -92,11 +88,7 @@ function BeanMesh() {
 }
 
 interface CoffeeBeanProps {
-  /** Narrow/portrait viewports: the text stack takes the full width above
-   * the fold instead of sharing it side-by-side, so the bean needs to sit
-   * lower to avoid rendering through the paragraph — and viewport.width
-   * (in Three.js world units) shrinks a lot in portrait aspect, so the
-   * normal width-based scale would render it almost invisibly small. */
+  /** Portrait/narrow screens need a different bean size and position than desktop. */
   compact?: boolean
 }
 
@@ -104,23 +96,16 @@ export default function CoffeeBean({ compact = false }: CoffeeBeanProps) {
   const groupRef = useRef<Group>(null)
   const { viewport } = useThree()
 
-  // Canvas is full-bleed across the hero; the background mug photo sits
-  // almost dead-center horizontally (~51% of the hero width) once it's
-  // cover-cropped into the wide/short hero box, so keep the bean nearly
-  // centered too — just a touch right of the mug so it doesn't sit flush
-  // on top of it — to read as "falling toward the cup" instead of floating
-  // off to one side of it.
+  // The mug in the background photo sits ~51% across once cover-cropped, so
+  // keep the bean nearly centered there too, reading as "falling toward the cup".
   const xOffset = viewport.width * 0.04
-  // viewport.height is derived purely from camera fov/distance, so it stays
-  // ~constant across screen sizes — a reliable anchor for nudging the bean
-  // down below the stacked mobile text without touching the desktop layout.
+  // viewport.height is constant across screen sizes (pure fov/distance math),
+  // so it's a stable anchor for pushing the bean below the stacked mobile text.
   const yOffset = compact ? -viewport.height * 0.2 : 0
 
   useFrame((state) => {
     if (!groupRef.current) return
-    // Gentle back-and-forth sweep (not a full 360° spin) so the bean's broad
-    // oval face keeps facing the camera — a flattened bean nearly disappears
-    // when it rotates edge-on, which a continuous one-direction spin would hit.
+    // Bounded sweep, not a full spin — a flattened bean nearly vanishes edge-on.
     const autoSweep = Math.sin(state.clock.elapsedTime * 0.3) * 0.55
     const targetY = 0.15 + autoSweep + (state.pointer.x * Math.PI) / 14
     const targetX = (-state.pointer.y * Math.PI) / 16
@@ -128,10 +113,8 @@ export default function CoffeeBean({ compact = false }: CoffeeBeanProps) {
     groupRef.current.rotation.x += (targetX - groupRef.current.rotation.x) * 0.04
   })
 
-  // Sized down from the previous pass — this should read as a nicely-proportioned
-  // accent, not dominate the hero. Portrait/mobile aspect ratios shrink
-  // viewport.width a lot even on a physically similar-sized screen, so give
-  // that case a floor rather than letting the same formula render a speck.
+  // Portrait aspect shrinks viewport.width a lot, so compact mode gets a floor
+  // so the bean doesn't render as a speck.
   const scale = compact
     ? Math.min(Math.max(viewport.width / 11, 0.42), 1.15)
     : Math.min(viewport.width / 11, 1.15)
