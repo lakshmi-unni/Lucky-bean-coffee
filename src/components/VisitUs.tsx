@@ -73,7 +73,7 @@ export default function VisitUs() {
                 the app and message us directly.
               </p>
               <a
-                href="https://wa.me/971505550148?text=Hi%20Lucky%20Bean%2C%20I%27d%20like%20to%20place%20an%20order"
+                href="https://wa.me/971504993644?text=Hi%20Lucky%20Bean%2C%20I%27d%20like%20to%20place%20an%20order"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-gold-500 px-6 py-2.5 text-sm font-semibold text-coffee-900 transition hover:bg-gold-400"

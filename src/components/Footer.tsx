@@ -102,7 +102,7 @@ export default function Footer() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-white/60">
               <li>Al Bandar Street, Al Bateen, Abu Dhabi, UAE</li>
-              <li>+971 2 555 0148</li>
+              <li>+971 50 499 3644</li>
               <li>hello@luckybean.ae</li>
               <li>
                 <a href="#contact" className="transition hover:text-white">
