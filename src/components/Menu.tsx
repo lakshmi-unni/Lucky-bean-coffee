@@ -54,6 +54,11 @@ const PRODUCTS: Product[] = [
 
 const CATEGORIES: Category[] = ['All', 'Hot', 'Iced', 'Bakery']
 
+function whatsAppOrderUrl(product: Product) {
+  const message = `Hi Lucky Bean, I'd like to order: ${product.name} (${product.price})`
+  return `https://wa.me/971504993644?text=${encodeURIComponent(message)}`
+}
+
 export default function Menu() {
   const [active, setActive] = useState<Category>('All')
   const [selected, setSelected] = useState<string | null>(null)
@@ -137,13 +142,15 @@ export default function Menu() {
                       <p className="mt-2 text-sm font-semibold text-coffee-700">
                         {product.price}
                       </p>
-                      <button
-                        type="button"
+                      <a
+                        href={whatsAppOrderUrl(product)}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="mt-4 w-full rounded-full bg-gold-500 py-2 text-xs font-semibold text-coffee-900 transition hover:bg-gold-400"
+                        className="mt-4 block w-full rounded-full bg-gold-500 py-2 text-xs font-semibold text-coffee-900 transition hover:bg-gold-400"
                       >
                         Order Now
-                      </button>
+                      </a>
                     </div>
                   </TiltCard>
                 </motion.div>
