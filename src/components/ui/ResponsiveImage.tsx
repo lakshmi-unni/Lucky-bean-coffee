@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { ImgHTMLAttributes } from 'react'
-import manifest from '../data/image-manifest.json'
+import manifest from '../../data/image-manifest.json'
 
 type Manifest = Record<string, { webp: string; lqip: string; width: number; height: number }>
 const IMAGE_MANIFEST = manifest as Manifest

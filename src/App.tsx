@@ -1,16 +1,16 @@
 import { Suspense, lazy } from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
+import Navbar from './components/sections/Navbar'
+import Hero from './components/sections/Hero'
 
-const About = lazy(() => import('./components/About'))
-const Menu = lazy(() => import('./components/Menu'))
-const WhyDifferent = lazy(() => import('./components/WhyDifferent'))
-const Gallery = lazy(() => import('./components/Gallery'))
-const CtaBanner = lazy(() => import('./components/CtaBanner'))
-const Testimonials = lazy(() => import('./components/Testimonials'))
-const VisitUs = lazy(() => import('./components/VisitUs'))
-const Newsletter = lazy(() => import('./components/Newsletter'))
-const Footer = lazy(() => import('./components/Footer'))
+const About = lazy(() => import('./components/sections/About'))
+const Menu = lazy(() => import('./components/sections/Menu'))
+const WhyDifferent = lazy(() => import('./components/sections/WhyDifferent'))
+const Gallery = lazy(() => import('./components/sections/Gallery'))
+const CtaBanner = lazy(() => import('./components/sections/CtaBanner'))
+const Testimonials = lazy(() => import('./components/sections/Testimonials'))
+const VisitUs = lazy(() => import('./components/sections/VisitUs'))
+const Newsletter = lazy(() => import('./components/sections/Newsletter'))
+const Footer = lazy(() => import('./components/sections/Footer'))
 
 function App() {
   return (

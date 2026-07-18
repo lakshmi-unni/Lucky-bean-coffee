@@ -1,8 +1,8 @@
 import { forwardRef, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useMediaQuery } from '../hooks/useMediaQuery'
-import ResponsiveImage from './ResponsiveImage'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
+import ResponsiveImage from '../ui/ResponsiveImage'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -27,7 +27,7 @@ const Bean = forwardRef<SVGSVGElement, { className?: string }>(function Bean(
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null)
   const beanRefs = useRef<(SVGSVGElement | null)[]>([])
-  const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
+  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     if (reduceMotion || !sectionRef.current) return

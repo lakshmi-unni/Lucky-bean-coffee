@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import type { MouseEvent, ReactNode } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
-import { useMediaQuery } from '../hooks/useMediaQuery'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 interface MagneticButtonProps {
   href: string
@@ -19,7 +19,7 @@ export default function MagneticButton({
   rel,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null)
-  const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
+  const reduceMotion = useReducedMotion()
 
   const x = useMotionValue(0)
   const y = useMotionValue(0)

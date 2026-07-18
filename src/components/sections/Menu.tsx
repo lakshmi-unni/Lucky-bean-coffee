@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import TiltCard from './TiltCard'
-import ResponsiveImage from './ResponsiveImage'
+import TiltCard from '../ui/TiltCard'
+import ResponsiveImage from '../ui/ResponsiveImage'
+import { buildWhatsAppUrl } from '../../constants/contact'
 
 type Category = 'All' | 'Hot' | 'Iced' | 'Bakery'
 
@@ -59,7 +60,7 @@ function orderMessage(product: Product) {
 }
 
 function whatsAppOrderUrl(product: Product) {
-  return `https://wa.me/971504993644?text=${encodeURIComponent(orderMessage(product))}`
+  return buildWhatsAppUrl(orderMessage(product))
 }
 
 // wa.me links can't attach images, so share the product photo via the Web

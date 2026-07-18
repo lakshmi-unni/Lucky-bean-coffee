@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import type { MouseEvent, ReactNode } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { useMediaQuery } from '../hooks/useMediaQuery'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 interface TiltCardProps {
   children: ReactNode
@@ -11,7 +11,7 @@ interface TiltCardProps {
 
 export default function TiltCard({ children, className, onClick }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
+  const reduceMotion = useReducedMotion()
 
   const rawX = useMotionValue(0.5)
   const rawY = useMotionValue(0.5)

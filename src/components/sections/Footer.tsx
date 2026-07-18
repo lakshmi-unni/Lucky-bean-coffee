@@ -1,3 +1,5 @@
+import { PHONE_DISPLAY } from '../../constants/contact'
+
 const ABOUT_LINKS = ['Menu', 'Our Story', 'News & Blogs', 'Help & Support']
 const COMPANY_LINKS = ['How we work', 'Terms of service', 'Pricing', 'FAQ']
 
@@ -102,7 +104,7 @@ export default function Footer() {
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-white/60">
               <li>Al Bandar Street, Al Bateen, Abu Dhabi, UAE</li>
-              <li>+971 50 499 3644</li>
+              <li>{PHONE_DISPLAY}</li>
               <li>hello@luckybean.ae</li>
               <li>
                 <a href="#contact" className="transition hover:text-white">

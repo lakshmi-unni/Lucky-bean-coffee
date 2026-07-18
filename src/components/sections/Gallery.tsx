@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
-import ResponsiveImage from './ResponsiveImage'
+import ResponsiveImage from '../ui/ResponsiveImage'
 
 interface GalleryImage {
   src: string

@@ -1,4 +1,5 @@
-import ResponsiveImage from './ResponsiveImage'
+import ResponsiveImage from '../ui/ResponsiveImage'
+import { DEFAULT_ORDER_MESSAGE, buildWhatsAppUrl } from '../../constants/contact'
 
 export default function CtaBanner() {
   return (
@@ -13,7 +14,7 @@ export default function CtaBanner() {
             order your favourite blend, and let Lucky Bean handle the rest.
           </p>
           <a
-            href="https://wa.me/971504993644?text=Hi%20Lucky%20Bean%2C%20I%27d%20like%20to%20place%20an%20order"
+            href={buildWhatsAppUrl(DEFAULT_ORDER_MESSAGE)}
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 inline-block rounded-full bg-gold-500 px-8 py-3 text-sm font-semibold text-coffee-900 transition hover:bg-gold-400"

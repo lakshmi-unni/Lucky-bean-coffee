@@ -1,18 +1,19 @@
 import { Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
-import { useMediaQuery } from '../hooks/useMediaQuery'
-import MagneticButton from './MagneticButton'
-import ResponsiveImage from './ResponsiveImage'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
+import { useReducedMotion } from '../../hooks/useReducedMotion'
+import MagneticButton from '../ui/MagneticButton'
+import ResponsiveImage from '../ui/ResponsiveImage'
 import FallingBeans from './FallingBeans'
 
-const HeroCanvas = lazy(() => import('../three/HeroCanvas'))
+const HeroCanvas = lazy(() => import('../../three/HeroCanvas'))
 
 const BEAN_PATTERN =
   "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='90'><g fill='%23c9a26b' opacity='0.5'><ellipse cx='18' cy='20' rx='9' ry='13' transform='rotate(-18 18 20)'/><ellipse cx='65' cy='55' rx='7' ry='10' transform='rotate(24 65 55)'/><ellipse cx='40' cy='78' rx='6' ry='9' transform='rotate(-8 40 78)'/></g></svg>\")"
 
 export default function Hero() {
   const isCompact = useMediaQuery('(max-width: 767px)')
-  const reduceMotion = useMediaQuery('(prefers-reduced-motion: reduce)')
+  const reduceMotion = useReducedMotion()
   const show3D = !reduceMotion
 
   return (

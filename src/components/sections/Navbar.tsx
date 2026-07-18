@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { PHONE_DISPLAY, PHONE_HREF, DEFAULT_ORDER_MESSAGE, buildWhatsAppUrl } from '../../constants/contact'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
@@ -29,11 +30,11 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-6 text-sm font-medium text-white/90 md:flex">
-          <a href="tel:+971504993644" className="transition hover:text-gold-400">
-            +971 50 499 3644
+          <a href={PHONE_HREF} className="transition hover:text-gold-400">
+            {PHONE_DISPLAY}
           </a>
           <a
-            href="https://wa.me/971504993644?text=Hi%20Lucky%20Bean%2C%20I%27d%20like%20to%20place%20an%20order"
+            href={buildWhatsAppUrl(DEFAULT_ORDER_MESSAGE)}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-gold-500 px-6 py-2.5 text-coffee-900 transition hover:bg-gold-400"
@@ -83,14 +84,14 @@ export default function Navbar() {
             </ul>
             <div className="flex flex-col gap-3 border-t border-white/10 px-8 py-5">
               <a
-                href="tel:+971504993644"
+                href={PHONE_HREF}
                 onClick={() => setOpen(false)}
                 className="text-sm font-medium text-white/90 transition hover:text-gold-400"
               >
-                +971 50 499 3644
+                {PHONE_DISPLAY}
               </a>
               <a
-                href="https://wa.me/971504993644?text=Hi%20Lucky%20Bean%2C%20I%27d%20like%20to%20place%20an%20order"
+                href={buildWhatsAppUrl(DEFAULT_ORDER_MESSAGE)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
