@@ -113,10 +113,10 @@ export default function About() {
         <div className="order-1 mx-auto md:order-2">
           <div className="relative w-full max-w-sm">
             <ResponsiveImage
-              src="/owner-lakshmi.png"
-              alt="Lakshmi, founder of Lucky Bean, roasting coffee beans at the Al Bateen café"
-              className="aspect-[4/5] w-full rounded-2xl shadow-xl"
-            />
+  src="/owner-lakshmi.jpg"
+  alt="Lakshmi, founder of Lucky Bean, roasting coffee beans at the Al Bateen café"
+  className="aspect-[4/5] w-full rounded-2xl shadow-xl"
+/>
 
             <ResponsiveImage
               src="/about-beans-heart.jpg"
