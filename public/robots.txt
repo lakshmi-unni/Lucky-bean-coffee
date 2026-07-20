@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luckybean-coffee.vercel.app/sitemap.xml
