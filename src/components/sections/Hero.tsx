@@ -96,13 +96,14 @@ export default function Hero() {
         >
           Your morning&apos;s about to get lucky with
         </motion.p>
-        <motion.h1
+      <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="font-script text-8xl leading-none text-white md:text-[10rem]"
         >
-          Coffee
+          <span className="sr-only">Lucky Bean — Specialty Coffee in Al Bateen, Abu Dhabi</span>
+          <span aria-hidden="true">Coffee</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
