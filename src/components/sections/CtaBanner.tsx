@@ -25,7 +25,7 @@ export default function CtaBanner() {
 
         <div className="mx-auto">
           <ResponsiveImage
-            src="/cta-coffee-cup.jpg"
+            src="/images/cta-coffee-cup.jpg"
             alt="Takeaway coffee cup surrounded by roasted coffee beans"
             className="h-72 w-72 rounded-full shadow-2xl md:h-80 md:w-80"
           />

@@ -22,7 +22,7 @@ export default function Hero() {
       className="bg-grain relative flex min-h-[760px] items-center overflow-hidden bg-coffee-950"
     >
       <ResponsiveImage
-        src="/hero-coffee.jpg"
+        src="/images/hero-coffee.jpg"
         alt=""
         aria-hidden="true"
         priority

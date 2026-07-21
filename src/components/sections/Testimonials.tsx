@@ -24,7 +24,7 @@ const REVIEWS = [
   {
     name: 'Rashid Al Marzouqi',
     role: 'Regular Customer, Al Bateen',
-    avatar: '/testimonial-avatar.jpg',
+    avatar: '/images/testimonial-avatar.jpg',
     rating: 5,
     quote:
       "They pull my order before I even ask. That's the good kind of predictable.",
@@ -32,7 +32,7 @@ const REVIEWS = [
   {
     name: 'Priya Nair',
     role: 'WFH Regular',
-    avatar: '/review-avatar-priya.jpg',
+    avatar: '/images/review-avatar-priya.jpg',
     rating: 5,
     quote:
       'Best flat white in Al Bateen, hands down. This place is basically my second office now.',
@@ -40,7 +40,7 @@ const REVIEWS = [
   {
     name: 'Omar Haddad',
     role: 'Weekend Visitor',
-    avatar: '/review-avatar-omar.jpg',
+    avatar: '/images/review-avatar-omar.jpg',
     rating: 4,
     quote:
       'Cardamom bun and an espresso is the move. Gets busy after 9am, worth the wait anyway.',
@@ -48,7 +48,7 @@ const REVIEWS = [
   {
     name: 'Fatima Al Suwaidi',
     role: 'Marketing Manager',
-    avatar: '/review-avatar-priya.jpg',
+    avatar: '/images/review-avatar-priya.jpg',
     rating: 5,
     quote:
       'Good wifi, better coffee, and nobody rushes you out after one cup. Rare combination in this city.',

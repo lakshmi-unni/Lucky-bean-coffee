@@ -9,12 +9,12 @@ interface GalleryImage {
 }
 
 const IMAGES: GalleryImage[] = [
-  { src: '/gallery-interior.jpg', alt: 'Warm, low-lit interior of the Lucky Bean café' },
-  { src: '/gallery-latte-art.jpg', alt: 'Close-up of latte art in a ceramic cup', mask: true },
-  { src: '/gallery-pour.jpg', alt: 'Barista pouring coffee into a white ceramic cup' },
-  { src: '/about-beans-heart.jpg', alt: 'Roasted coffee beans, close-up texture' },
-  { src: '/gallery-bakery.jpg', alt: 'Fresh cardamom buns from the pastry case' },
-  { src: '/hero-coffee.jpg', alt: 'Steaming cup surrounded by roasted coffee beans' },
+  { src: '/images/gallery-interior.jpg', alt: 'Warm, low-lit interior of the Lucky Bean café' },
+  { src: '/images/gallery-latte-art.jpg', alt: 'Close-up of latte art in a ceramic cup', mask: true },
+  { src: '/images/gallery-pour.jpg', alt: 'Barista pouring coffee into a white ceramic cup' },
+  { src: '/images/about-beans-heart.jpg', alt: 'Roasted coffee beans, close-up texture' },
+  { src: '/images/gallery-bakery.jpg', alt: 'Fresh cardamom buns from the pastry case' },
+  { src: '/images/hero-coffee.jpg', alt: 'Steaming cup surrounded by roasted coffee beans' },
 ]
 
 function ParallaxTile({ image, index, onOpen }: { image: GalleryImage; index: number; onOpen: () => void }) {

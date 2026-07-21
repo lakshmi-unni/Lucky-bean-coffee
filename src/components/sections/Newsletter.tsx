@@ -2,13 +2,13 @@ export default function Newsletter() {
   return (
     <section id="newsletter" className="relative overflow-hidden bg-coffee-900">
       <img
-        src="/hero-coffee.jpg"
+        src="/images/hero-coffee.jpg"
         alt=""
         aria-hidden="true"
         className="absolute -left-16 -bottom-16 h-56 w-56 rounded-full object-cover opacity-40 md:h-72 md:w-72"
       />
       <img
-        src="/hero-coffee.jpg"
+        src="/images/hero-coffee.jpg"
         alt=""
         aria-hidden="true"
         className="absolute -right-16 -bottom-16 h-56 w-56 rounded-full object-cover opacity-40 md:h-72 md:w-72"
